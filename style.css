@@ -11,6 +11,8 @@
     --white: #fffbfb;
 }
 
+/* simnple styling  */
+
 body {
     min-height: 100vh;
     font-family:'Poppins', sans-serif;
@@ -19,7 +21,7 @@ body {
 header {
     padding: 20px 0px 20px 30px;
     background: var(--white);
-    margin-bottom: 10%;
+    margin-bottom: clamp(3rem,12.5%,6rem);
     box-shadow: 5px 5px 10px rgb(0 0 0 / 30%);
     font-size: 1.3rem;
 }
@@ -45,13 +47,44 @@ button.addBtn {
     right: 40px;
 }
 
-div i,
+div.github i,
 button.addBtn {
     transition: ease-in-out 1s;
 }
 
-div i:hover,
+div.github i:hover,
 button.addBtn:hover {
     cursor: pointer;
     transform: rotate(-360deg) scale(1.2);
 }
+
+/* end of simnple styling  */
+
+/* main styling */
+
+main {
+    display: flex;
+    flex-direction:column;
+    padding: 0 40px;
+    gap: 10px;
+}
+
+div.book {
+    display: flex;
+    gap: 15px;
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--white);
+}
+
+div.book i:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+div.book div:last-child {
+    margin-left: auto;
+}
+
+/* end of main styling  */
