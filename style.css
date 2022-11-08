@@ -24,3 +24,34 @@ header {
     font-size: 1.3rem;
 }
 
+div.github{
+    position: absolute;
+    right: 40px;
+    bottom: 100px;
+}
+
+button.addBtn {
+    background-color: var(--green);
+    position: absolute;
+    border: none;
+    border-radius: 100%;
+    padding: 5px;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 40px;
+    right: 40px;
+}
+
+div i,
+button.addBtn {
+    transition: ease-in-out 1s;
+}
+
+div i:hover,
+button.addBtn:hover {
+    cursor: pointer;
+    transform: rotate(-360deg) scale(1.2);
+}
