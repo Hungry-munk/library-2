@@ -1,0 +1,26 @@
+*,*::after,*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --gray:#f0eef1;
+    --green:#9fff9c;
+    --light-red: #ff9c9c;
+    --white: #fffbfb;
+}
+
+body {
+    min-height: 100vh;
+    font-family:'Poppins', sans-serif;
+    background-color: var(--gray);
+}
+header {
+    padding: 20px 0px 20px 30px;
+    background: var(--white);
+    margin-bottom: 10%;
+    box-shadow: 5px 5px 10px rgb(0 0 0 / 30%);
+    font-size: 1.3rem;
+}
+
