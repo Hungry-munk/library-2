@@ -22,18 +22,24 @@ document.addEventListener('keydown', e =>{
     if (e.key === '+' && modalOveraly.style.visibility == "hidden")revealModal()
 });
 submitBtn.addEventListener('click',(e)=>{
+    e.preventDefault()//stopping form from submitting
+    hideModal()
     const title = document.getElementById("title").value
     const author = document.getElementById("author").value
     const pages = document.getElementById("pages").value
     const readStatus = document.getElementById("has-read").checked
     
     addBookTolibrary(title,author,pages,readStatus)
-    let bookElement = createHTMLbook(myLibrary[myLibrary.length - 1])
-    bookElement.setAttribute('data-index', `${myLibrary.length -1}`)
-    console.log(bookElement)
+
+    const bookElement = createHTMLbook(myLibrary[myLibrary.length - 1])
+    const editButton = bookElement.lastElementChild.lastChild
+
+    bookElement.setAttribute('book-index', `${myLibrary.length -1}`)
+    editButton.addEventListener('click',()=>{
+        console.log(bookElement)
+    })
     
     main.appendChild(bookElement)
-    e.preventDefault()
 
 })
 
