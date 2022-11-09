@@ -6,6 +6,7 @@ const main = document.querySelector('main')
 const submitBtn = document.querySelector('.modal-form form button')
 const editModal = document.querySelector('.modal-edit')
 const editBtn = document.querySelector('.edit-book')
+const removeBtn = document.querySelector(".remove-book")
 
 let myLibrary = []
 
@@ -39,6 +40,9 @@ submitBtn.addEventListener('click',(e)=>{
     bookElement.setAttribute('book-index', `${myLibrary.length -1}`)
     editButton.addEventListener('click',()=>{
         editBtn.removeEventListener('click',window.editBook)
+        removeBtn.removeEventListener("click",window.removeBook)
+
+        removeButtonFunctionality(bookElement.getAttribute("book-index"))
         editButtonFunctionality(bookElement,myLibrary[parseInt(bookElement.getAttribute(`book-index`))])
     })
     
@@ -137,8 +141,16 @@ function editButtonFunctionality (bookElement,bookObj) {
             bookElementchilden[3].classList.remove('read')
             bookElementchilden[3].classList.add('unread')
         }
-
         hideModal()
     } 
     editBtn.addEventListener('click',window.editBook)
+}
+
+function removeButtonFunctionality (bookIndex) {
+    const bookElement = document.querySelector(`[book-index="${bookIndex}"]`)
+    window.removeBook = function () {
+        console.log(bookElement)
+    }
+
+    removeBtn.addEventListener("click",window.removeBook)
 }
