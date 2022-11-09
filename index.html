@@ -42,7 +42,7 @@
 
             <div class="modal-input">
                 <input class="text-label" type="number" placeholder="pages" id="pages" max="100000">
-                <label for="">pages</label>
+                <label for="pages">pages</label>
             </div>
 
             <div class="modal-input">
@@ -51,6 +51,35 @@
             </div>
 
             <button class="add-book">add book</button>
+        </form>
+    </div>
+
+    <div class="modal-edit">
+        <form action="">
+            <h3>Edit book</h3>
+
+            <div class="modal-input">
+                <input class="text-label" type="text" placeholder="title" id="title-edit" required minlength="1" maxlength="50">
+                <label for="title-edit">title</label>
+            </div>
+
+            <div class="modal-input">
+                <input class="text-label" type="text" placeholder="author" id="author-edit" minlength="1" max="50">
+                <label for="author-edit">author</label required>
+            </div>
+
+            <div class="modal-input">
+                <input class="text-label" type="number" placeholder="pages" id="pages-edit" max="100000">
+                <label for="pages-edit">pages</label>
+            </div>
+
+            <div class="modal-input">
+                <label for="has-read-edit">finished reading?</label>
+                <input type="checkbox" id="has-read-edit">
+            </div>
+
+            <button class="edit-book">edit book</button>
+            <button class="remove-book">remove book</button>
         </form>
     </div>
 

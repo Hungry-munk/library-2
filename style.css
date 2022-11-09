@@ -104,7 +104,8 @@ div.modal-blocker {
     visibility: hidden;
     z-index: 1;
 }
-.modal-form {
+div.modal-form,
+div.modal-edit {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -182,6 +183,10 @@ form button {
     padding: 5px 0;
 }
 
+button.remove-book {
+    background-color: var(--light-red);
+}
+
 form button:hover {
     cursor: pointer;
     opacity: 0.8;
@@ -211,6 +216,7 @@ input[type="checkbox"]{
     width: 2.5rem;
     height: 1rem;
     border-radius: var(--border-radius);
+    cursor: pointer;
 
 }
 input[type="checkbox"]::before {

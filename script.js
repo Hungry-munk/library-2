@@ -36,7 +36,7 @@ submitBtn.addEventListener('click',(e)=>{
 
     bookElement.setAttribute('book-index', `${myLibrary.length -1}`)
     editButton.addEventListener('click',()=>{
-        console.log(bookElement)
+        editButtonFunctionality(bookElement)
     })
     
     main.appendChild(bookElement)
@@ -94,3 +94,6 @@ function createBookElement (text,className) {
     return newElement
 }
 
+function editButtonFunctionality (bookElement) {
+    console.log(bookElement)
+}
