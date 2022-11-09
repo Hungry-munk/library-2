@@ -3,7 +3,8 @@ const modalOveraly = document.querySelector(".modal-blocker")
 const modal = document.querySelector(".modal-form")
 const form = document.querySelector('form')
 const main = document.querySelector('main')
-const submitBtn = document.querySelector('form button')
+const submitBtn = document.querySelector('.modal-form form button')
+const editModal = document.querySelector('.modal-edit')
 
 let myLibrary = []
 
@@ -36,7 +37,7 @@ submitBtn.addEventListener('click',(e)=>{
 
     bookElement.setAttribute('book-index', `${myLibrary.length -1}`)
     editButton.addEventListener('click',()=>{
-        editButtonFunctionality(bookElement)
+        editButtonFunctionality(bookElement,myLibrary[myLibrary.length - 1])
     })
     
     main.appendChild(bookElement)
@@ -73,9 +74,20 @@ function revealModal () {
 function hideModal() {
     modalOveraly.style.visibility = "hidden"
     modal.classList.remove('open')
+    editModal.classList.remove('open')
     setTimeout(()=>{//so youi cant see it reset 
         resetForm()
     },1000)
+}
+
+function revealEditModal(bookObj) {
+    modalOveraly.style.visibility = "visible"
+    editModal.classList.add('open')
+
+    document.getElementById("title-edit").value = bookObj.title
+    document.getElementById("author-edit").value = bookObj.author
+    document.getElementById("pages-edit").value = bookObj.pages
+    document.getElementById("has-read-edit").checked = bookObj.readStatus
 }
 
 function resetForm() {
@@ -94,6 +106,6 @@ function createBookElement (text,className) {
     return newElement
 }
 
-function editButtonFunctionality (bookElement) {
-    console.log(bookElement)
+function editButtonFunctionality (bookElement,bookObj) {
+    revealEditModal(bookObj)
 }
