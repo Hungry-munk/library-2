@@ -48,6 +48,7 @@ document.addEventListener('keydown', e =>{
     if (e.key === '+' && modalOveraly.style.visibility == "hidden")revealModal()
 });
 
+
 function revealModal () {
     modalOveraly.style.visibility = "visible"
     modal.classList.add('open')
@@ -65,3 +66,14 @@ function resetForm() {
     form.reset()
 }
 
+function displayBooks() {
+    main.innerHTML=""
+    for (let book of myLibrary) {
+        main.appendChild(book)
+    }
+}
+
+function addBookTolibrary (title,author,pages,readStatus) {
+    const newBook = new book(title,author,pages,readStatus)
+    myLibrary.push(newBook)
+}
