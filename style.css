@@ -90,3 +90,69 @@ div.book div:last-child {
 }
 
 /* end of main styling  */
+
+/* modal styling */
+
+div.modal-blocker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0,0,0, 0.5);
+    visibility: hidden;
+    z-index: 1;
+}
+div.modal-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+form div.modal-input {
+    position: relative;
+}
+
+form input.text-label {
+    outline: none;
+    border: none;
+    padding: 20px 10px 10px 10px ;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+form input.text-label::placeholder {
+ position:absolute;
+ top: 50%;
+ transform: translatey(-50%);
+}
+
+input.text-label ~label,
+input.text-label:focus::placeholder {
+    visibility: hidden;
+}
+
+input.text-label:focus ~label {
+    visibility: visible;
+}
+
+ input.text-label ~ label {
+    position: absolute;
+    left: 10px;
+    font-size: 0.7rem;
+    top: 1px;
+}
+
+
+
+
+/* modal stlying end */
