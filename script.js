@@ -3,6 +3,7 @@ const modalOveraly = document.querySelector(".modal-blocker")
 const modal = document.querySelector(".modal-form")
 const form = document.querySelector('form')
 const main = document.querySelector('main')
+const submitBtn = document.querySelector('form button')
 
 let myLibrary = []
 
@@ -13,41 +14,50 @@ function book(title,author,pages,readStatus) {
     this.readStatus = readStatus;
 }
 
-function createHTMLbook (bookObj) {
-    const book = document.createElement('div')
-    const pages = document.createElement('div')
-    const author = document.createElement('div')
-    const title = document.createElement('div')
-    const readStatus = document.createElement('div')
-    const editButton = document.createElement("div")
 
-    book.classList.add("book")
-    pages.classList.add("pages")
-    author.classList.add("author")
-    title.classList.add('title')
-    readStatus.classList.add("read-status")
-
-    title.textContent = `${bookObj.title}`
-    pages.textContent = `${bookObj.pages} pages`
-    author.textContent = `by ${bookObj.author}`
-    readStatus.textContent = bookObj.readStatus ? "is read": "isn't read"
-    editButton.innerHTML = `<i class="fa-regular fa-pen-to-square"></i>`
-
-    book.appendChild(title)
-    book.appendChild(pages)
-    book.appendChild(author)
-    book.appendChild(readStatus)
-    book.append(editButton)
-    return book
-}
-
-addBtn.addEventListener('click',revealModal)
-modalOveraly.addEventListener('click',hideModal)
+addBtn.addEventListener('click',revealModal);
+modalOveraly.addEventListener('click',hideModal);
 document.addEventListener('keydown', e =>{
     if (e.key === 'Escape' && modalOveraly.style.visibility == 'visible')hideModal()
     if (e.key === '+' && modalOveraly.style.visibility == "hidden")revealModal()
 });
+submitBtn.addEventListener('click',(e)=>{
+    const title = document.getElementById("title").value
+    const author = document.getElementById("author").value
+    const pages = document.getElementById("pages").value
+    const readStatus = document.getElementById("has-read").checked
+    
+    addBookTolibrary(title,author,pages,readStatus)
+    let bookElement = createHTMLbook(myLibrary[myLibrary.length - 1])
+    bookElement.setAttribute('data-index', `${myLibrary.length -1}`)
+    console.log(bookElement)
+    
+    main.appendChild(bookElement)
+    e.preventDefault()
 
+})
+
+function createHTMLbook (bookObj) {
+    const book = document.createElement('div')
+    book.classList.add("class","book")
+
+    book.appendChild(createBookElement(`${bookObj.title}`,'title'))
+    book.appendChild(createBookElement(`${bookObj.pages} pages`,"pages"))
+    book.appendChild(createBookElement(`by ${bookObj.author}`,"author"))
+
+    const readStatusText = bookObj.readStatus ? "is read": "isn't read"
+    const readStatus = (createBookElement(`${readStatusText}`,"read-status"))    
+    if(bookObj.readStatus) readStatus.classList.add("read")
+    else readStatus.classList.add("unread")
+    
+    const editButton = document.createElement("div")
+    editButton.innerHTML = `<i class="fa-regular fa-pen-to-square"></i>`
+
+    book.appendChild(readStatus)
+    book.append(editButton)
+
+    return book
+}
 
 function revealModal () {
     modalOveraly.style.visibility = "visible"
@@ -66,14 +76,15 @@ function resetForm() {
     form.reset()
 }
 
-function displayBooks() {
-    main.innerHTML=""
-    for (let book of myLibrary) {
-        main.appendChild(book)
-    }
-}
-
 function addBookTolibrary (title,author,pages,readStatus) {
     const newBook = new book(title,author,pages,readStatus)
     myLibrary.push(newBook)
 }
+
+function createBookElement (text,className) {
+    let newElement = document.createElement('div')
+    newElement.textContent = text
+    newElement.classList.add(className)
+    return newElement
+}
+
