@@ -136,12 +136,14 @@ form input.text-label::placeholder {
  transform: translatey(-50%);
 }
 
-input.text-label ~label,
+input.text-label ~ label,
 input.text-label:focus::placeholder {
     visibility: hidden;
 }
 
-input.text-label:focus ~label {
+
+input.text-label:focus ~ label,
+input.text-label:not(:placeholder-shown) ~ label {
     visibility: visible;
 }
 
@@ -149,7 +151,7 @@ input.text-label:focus ~label {
     position: absolute;
     left: 10px;
     font-size: 0.7rem;
-    top: 1px;
+    top: 5px;
 }
 
 
