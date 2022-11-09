@@ -47,7 +47,7 @@ submitBtn.addEventListener('click',(e)=>{
 
 function createHTMLbook (bookObj) {
     const book = document.createElement('div')
-    book.classList.add("class","book")
+    book.classList.add("book")
 
     book.appendChild(createBookElement(`${bookObj.title}`,'title'))
     book.appendChild(createBookElement(`${bookObj.pages} pages`,"pages"))
@@ -110,17 +110,34 @@ function createBookElement (text,className) {
 function editButtonFunctionality (bookElement,bookObj) {
     revealEditModal(bookObj)
     editBtn.addEventListener('click',(e)=>{
-        myLibrary[parseInt(bookElement.getAttribute('book-index'))].title = 
-            document.getElementById("title-edit").value
+        let bookIndex = bookElement.getAttribute('book-index')
+        myLibrary[parseInt(bookIndex)].title = 
+            document.getElementById("title-edit").value;
+        myLibrary[parseInt(bookIndex)].author = 
+            document.getElementById("author-edit").value;
+        myLibrary[parseInt(bookIndex)].pages = 
+            document.getElementById("pages-edit").value;
+        myLibrary[parseInt(bookIndex)].readStatus = 
+            document.getElementById("has-read-edit").checked;
+
+        const bookElementchilden = 
+            document.querySelector(`[book-index="${bookIndex}"]`).childNodes;
         
-        myLibrary[parseInt(bookElement.getAttribute('book-index'))].author = 
-            document.getElementById("author-edit").value
-
-        myLibrary[parseInt(bookElement.getAttribute('book-index'))].pages = 
-            document.getElementById("pages-edit").value
-
-        myLibrary[parseInt(bookElement.getAttribute('book-index'))].readStatus = 
-            document.getElementById("has-read-edit").checked
-
+        bookElementchilden[0].textContent = myLibrary[parseInt(bookIndex)].title
+        bookElementchilden[1].textContent = `${myLibrary[parseInt(bookIndex)].pages} pages`
+        bookElementchilden[2].textContent = `by ${myLibrary[parseInt(bookIndex)].author}`
+        
+        if (myLibrary[parseInt(bookIndex)].readStatus){
+        bookElementchilden[3].textContent = "is read";
+        bookElementchilden[3].classList.remove('unread');
+        bookElementchilden[3].classList.add('read') ;
+        } else {
+        bookElementchilden[3].textContent = "isn't read";
+        bookElementchilden[3].classList.remove('read') ; 
+        bookElementchilden[3].classList.add('unread');
+        }
+            
+        hideModal()
+    
     });
 }
