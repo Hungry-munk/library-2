@@ -5,6 +5,7 @@ const form = document.querySelector('form')
 const main = document.querySelector('main')
 const submitBtn = document.querySelector('.modal-form form button')
 const editModal = document.querySelector('.modal-edit')
+const editBtn = document.querySelector('.edit-book')
 
 let myLibrary = []
 
@@ -108,4 +109,18 @@ function createBookElement (text,className) {
 
 function editButtonFunctionality (bookElement,bookObj) {
     revealEditModal(bookObj)
+    editBtn.addEventListener('click',(e)=>{
+        myLibrary[parseInt(bookElement.getAttribute('book-index'))].title = 
+            document.getElementById("title-edit").value
+        
+        myLibrary[parseInt(bookElement.getAttribute('book-index'))].author = 
+            document.getElementById("author-edit").value
+
+        myLibrary[parseInt(bookElement.getAttribute('book-index'))].pages = 
+            document.getElementById("pages-edit").value
+
+        myLibrary[parseInt(bookElement.getAttribute('book-index'))].readStatus = 
+            document.getElementById("has-read-edit").checked
+
+    });
 }
