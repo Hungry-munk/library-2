@@ -101,20 +101,27 @@ div.modal-blocker {
     height: 100vh;
     width: 100vw;
     background-color: rgba(0,0,0, 0.5);
-    /* visibility: hidden; */
+    visibility: hidden;
     z-index: 1;
 }
-div.modal-form {
+.modal-form {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translate(-50%,-50%) scale(0);
+    z-index: 2;
+    visibility: hidden;
 
     background-color: var(--gray);
-    z-index: 2;
     padding: clamp(15px,7vw,30px);
     width: clamp(285px , 20%, 335px);
     border-radius: var(--border-radius);
+    transition: ease-in-out 0.35s;
+}
+
+div.modal-form.open {
+    transform: translate(-50%,-50%) scale(1);
+    visibility: visible;
 }
 
 form {
@@ -185,7 +192,8 @@ div.modal-input:last-of-type{
     /* styling the checkbox container */
     display: flex;
     justify-content: center;
-    gap: 10px;
+    align-items: center;
+    gap: 15px;
 }
 /* modal stlying end */
 
