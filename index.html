@@ -46,23 +46,23 @@
             <h3>add new book</h3>
 
             <div class="modal-input">
-                <input class="text-label" type="text" placeholder="title" id="title" required>
+                <input class="text-label" type="text" placeholder="title" id="title" required minlength="1" maxlength="50">
                 <label for="title">title</label>
             </div>
 
             <div class="modal-input">
-                <input class="text-label" type="text" placeholder="author" id="author">
+                <input class="text-label" type="text" placeholder="author" id="author" minlength="1" max="50">
                 <label for="author">author</label required>
             </div>
 
             <div class="modal-input">
-                <input class="text-label" type="number" placeholder="pages" id="pages">
+                <input class="text-label" type="number" placeholder="pages" id="pages" max="100000">
                 <label for="">pages</label>
             </div>
 
             <div class="modal-input">
-                <input type="checkbox" id="has-read">
                 <label for="has-read">finished reading?</label>
+                <input type="checkbox" id="has-read">
             </div>
 
             <button class="add-book">add book</button>

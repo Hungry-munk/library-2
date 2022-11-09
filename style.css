@@ -9,6 +9,7 @@
     --green:#9fff9c;
     --light-red: #ff9c9c;
     --white: #fffbfb;
+    --border-radius: 10px;
 }
 
 /* simnple styling  */
@@ -74,7 +75,7 @@ div.book {
     gap: 15px;
     flex: 1;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     background-color: var(--white);
 }
 
@@ -100,7 +101,7 @@ div.modal-blocker {
     height: 100vh;
     width: 100vw;
     background-color: rgba(0,0,0, 0.5);
-    visibility: hidden;
+    /* visibility: hidden; */
     z-index: 1;
 }
 div.modal-form {
@@ -108,6 +109,12 @@ div.modal-form {
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
+
+    background-color: var(--gray);
+    z-index: 2;
+    padding: clamp(15px,7vw,30px);
+    width: clamp(285px , 20%, 335px);
+    border-radius: var(--border-radius);
 }
 
 form {
@@ -115,11 +122,14 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 1.2rem;
+    width: 100%;
+
 }
 
 form div.modal-input {
     position: relative;
+    width: inherit;
 }
 
 form input.text-label {
@@ -127,7 +137,8 @@ form input.text-label {
     border: none;
     padding: 20px 10px 10px 10px ;
     font-size: 1rem;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
+    width: inherit;
 }
 
 form input.text-label::placeholder {
@@ -154,7 +165,60 @@ input.text-label:not(:placeholder-shown) ~ label {
     top: 5px;
 }
 
+form button {
+    background-color: var(--green);
+    border: none;
+    font-size: 1.3rem;
+    font-weight:600;
+    border-radius: var(--border-radius);
+    width: inherit;
+    padding: 5px 0;
+}
 
+form button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    filter: brightness(0.95);
+}
 
-
+div.modal-input:last-of-type{
+    /* styling the checkbox container */
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
 /* modal stlying end */
+
+/* petty styling */
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none; 
+}
+
+input[type="checkbox"]{
+    -webkit-appearance: none;
+    position: relative;
+    background-color: var(--white);
+    width: 2.5rem;
+    height: 1rem;
+    border-radius: var(--border-radius);
+
+}
+input[type="checkbox"]::before {
+    content: '';
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--light-red);
+    border-radius: var(--border-radius);
+    transform: scale(1.2);
+    transition: 0.5s ease all;
+    left: 0;
+}
+
+input:checked[type="checkbox"]::before {
+    background-color: var(--green);
+    left: 1.5rem;
+}
+/* petty styling */
