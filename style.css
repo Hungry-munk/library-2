@@ -84,6 +84,8 @@ div.book i:hover {
 }
 
 div.book div:last-child {
+    display: flex;
+    align-items: center;
     margin-left: auto;
 }
 
