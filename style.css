@@ -79,6 +79,25 @@ div.book {
     background-color: var(--white);
 }
 
+div.book div:not(:last-child) {
+    padding: 5px;
+    border-radius: var(--border-radius);
+    width: clamp( 60px, 12.5%,110px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.unread {
+    background-color: var(--light-red);
+    text-align: center;
+}
+
+.read {
+    background-color: var(--green);
+    text-align: center;
+}
+
 div.book i:hover {
     cursor: pointer;
     transform: scale(1.2);
