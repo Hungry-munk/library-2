@@ -77,6 +77,7 @@ div.book {
     padding: 10px;
     border-radius: var(--border-radius);
     background-color: var(--white);
+    position: relative;
 }
 
 div.book div:not(:last-child) {
@@ -84,10 +85,34 @@ div.book div:not(:last-child) {
     border-radius: var(--border-radius);
     width: clamp( 60px, 12.5%,110px);
     white-space: nowrap;
+    text-overflow:ellipsis ;
     overflow: hidden;
-    text-overflow: ellipsis;
+    position: relative;
+}
+div.book div:not(:last-child):hover{
+    overflow: visible;
+}
+.book div:not(:last-child):hover::after{
+    border: none;
+    background-color: var(--white);
+    font-size: 1rem;
+    position: absolute;
+    padding: 5px;
+    border-radius: var(--border-radius);
+    top:0 ;
+    left:0;
+    transform: translate(-50%,-50%) scale();
+    content:attr(content);
+    outline: none;
+    z-index: 1;
 }
 
+.book .unread:not(:last-child):hover::after,
+.book .read:not(:last-child):hover::after {
+    text-align: center;
+    background-color: inherit;
+    width: 100%;
+}
 .unread {
     background-color: var(--light-red);
     text-align: center;

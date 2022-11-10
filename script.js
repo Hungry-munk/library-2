@@ -60,7 +60,7 @@ function createHTMLbook (bookObj) {
 
     const readStatusText = bookObj.readStatus ? "is read": "isn't read"
     const readStatus = (createBookElement(`${readStatusText}`,"read-status"))    
-    if(bookObj.readStatus) readStatus.classList.add("read")
+    if(bookObj.readStatus){ readStatus.classList.add("read")}
     else readStatus.classList.add("unread")
     
     const editButton = document.createElement("div")
@@ -109,6 +109,7 @@ function createBookElement (text,className) {
     let newElement = document.createElement('div')
     newElement.textContent = text
     newElement.classList.add(className)
+    newElement.setAttribute("content",`${text}`)
     return newElement
 }
 
@@ -132,12 +133,20 @@ function editButtonFunctionality (bookElement,bookObj) {
         bookElementchilden[1].textContent = `${myLibrary[parseInt(bookIndex)].pages} pages`
         bookElementchilden[2].textContent = `by ${myLibrary[parseInt(bookIndex)].author}`
 
+        bookElementchilden[0].setAttribute("content",`${myLibrary[parseInt(bookIndex)].title}`) 
+        bookElementchilden[1].setAttribute("content",`${myLibrary[parseInt(bookIndex)].pages} pages`)
+        bookElementchilden[2].setAttribute("content",`by ${myLibrary[parseInt(bookIndex)].author}`) 
+
+
+
         if (myLibrary[parseInt(bookIndex)].readStatus) {
             bookElementchilden[3].textContent = "is read"
+            bookElementchilden[3].setAttribute("content", "is read")
             bookElementchilden[3].classList.remove('unread')
             bookElementchilden[3].classList.add('read')
         } else {
             bookElementchilden[3].textContent = "isn't read"
+            bookElementchilden[3].setAttribute("content", "isn't read")
             bookElementchilden[3].classList.remove('read')
             bookElementchilden[3].classList.add('unread')
         }
