@@ -149,7 +149,20 @@ function editButtonFunctionality (bookElement,bookObj) {
 function removeButtonFunctionality (bookIndex) {
     const bookElement = document.querySelector(`[book-index="${bookIndex}"]`)
     window.removeBook = function () {
-        console.log(bookElement)
+        main.removeChild(bookElement)
+        myLibrary.splice(parseInt(bookElement),1)
+
+        if (main.childElementCount > 0){
+            main.childNodes.forEach(book =>{
+            if (parseInt(book.getAttribute('book-index') 
+                < parseInt(bookIndex))) return;
+            console.log(book)
+            book.setAttribute("book-index", 
+            `${parseInt(book.getAttribute("book-index")) -1}`)
+        });
+    };
+
+        hideModal()
     }
 
     removeBtn.addEventListener("click",window.removeBook)
