@@ -26,6 +26,11 @@ document.addEventListener('keydown', e =>{
 });
 submitBtn.addEventListener('click',(e)=>{
     e.preventDefault()//stopping form from submitting
+    if (
+        document.getElementById("title").value == ''||
+        document.getElementById("author").value == "" ||
+        document.getElementById("pages").value == ""
+    ) return //checking for empty boxes
     hideModal()
     const title = document.getElementById("title").value
     const author = document.getElementById("author").value
@@ -117,6 +122,12 @@ function editButtonFunctionality (bookElement,bookObj) {
     revealEditModal(bookObj)
 
     window.editBook = function() {
+        if (
+            document.getElementById("title-edit").value == ''||
+            document.getElementById("author-edit").value == "" ||
+            document.getElementById("pages-edit").value == ""
+        ) return //checking for empty boxes
+
         let bookIndex = bookElement.getAttribute('book-index')
         myLibrary[parseInt(bookIndex)].title =
             document.getElementById("title-edit").value
