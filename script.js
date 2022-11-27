@@ -10,11 +10,20 @@ const removeBtn = document.querySelector(".remove-book")
 
 let myLibrary = []
 
-function book(title,author,pages,readStatus) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.readStatus = readStatus;
+// function book(title,author,pages,readStatus) {
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.readStatus = readStatus;
+// }
+
+class book {
+    constructor(title,author,pages,readStatus) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.readStatus = readStatus;
+    }
 }
 
 
@@ -147,8 +156,6 @@ function editButtonFunctionality (bookElement,bookObj) {
         bookElementchilden[0].setAttribute("content",`${myLibrary[parseInt(bookIndex)].title}`) 
         bookElementchilden[1].setAttribute("content",`${myLibrary[parseInt(bookIndex)].pages} pages`)
         bookElementchilden[2].setAttribute("content",`by ${myLibrary[parseInt(bookIndex)].author}`) 
-
-
 
         if (myLibrary[parseInt(bookIndex)].readStatus) {
             bookElementchilden[3].textContent = "is read"
